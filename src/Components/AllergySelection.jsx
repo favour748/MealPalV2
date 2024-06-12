@@ -1,61 +1,59 @@
-import React, { useState, useEffect } from "react";
-import Healthissues from "../Components/Healthissues";
+import React, { useState } from "react";
 
 const AllergySelection = () => {
+  const [selectedOptions, setSelectedOptions] = useState([]);
+
   const allergyOptions = [
-    "Shellfish-Free",
-    "Dairy-Free",
-    "Nut-Free",
-    "Gluten-Free",
-    "Fish-Free",
-    "Soy-Free",
-    "Tree Nut-Free",
-    "Sesame-Free",
-    "Peanut-Free",
-    "Egg-Free",
-    "Sulfite-Free",
-    "Lactose-Free",
-    "Mustard-Free",
+    { name: "Eggs", description: "Any meal containing eggs" },
+    { name: "Seafood", description: "Shrimps, Snails, Crabs" },
+    { name: "Nuts", description: "Cashew, Almonds, Hazelnuts, Walnuts" },
+    { name: "Lactose", description: "Milk, Butter, Cheese, Ice-cream, Yogurt" },
+    { name: "Gluten", description: "Foods such as wheat, barley, oats" },
   ];
 
-  const [selectedAllergies, setSelectedAllergies] = useState([]);
-
-  const handleAllergyClick = (allergy) => {
-    // Handle click event for each allergy button
-    if (selectedAllergies.includes(allergy)) {
-      setSelectedAllergies(
-        selectedAllergies.filter((item) => item !== allergy)
-      );
+  const handleOptionSelect = (option) => {
+    // Toggle the option in and out of selectedOptions
+    if (selectedOptions.includes(option)) {
+      setSelectedOptions(selectedOptions.filter(item => item !== option));
     } else {
-      setSelectedAllergies([...selectedAllergies, allergy]);
+      setSelectedOptions([...selectedOptions, option]);
     }
   };
 
-  useEffect(() => {
-    // Update local storage when selected allergies change
-    localStorage.setItem(
-      "selectedAllergies",
-      JSON.stringify(selectedAllergies)
-    );
-  }, [selectedAllergies]);
-
   return (
-    <div className="flex flex-col justify-center lg:items-center min-h-screen px-4">
-      <h2 className="text-2xl font-extrabold mb-4">Any allergies?</h2>
-      <div className="lg:text-center lg:max-w-lg">
+    <div className="min-h-screen w-screen px-4 flex flex-col justify-center lg:items-center">
+      <h2 className="mb-4 mt-10 text-2xl font-bold text-left lg:text-center">
+        Do you have any existing allergies?
+      </h2>
+      <div className="flex flex-col gap-4 lg:gap-8 mb-10">
         {allergyOptions.map((option) => (
-          <button
-            key={option}
-            onClick={() => handleAllergyClick(option)}
-            className={`border rounded-md py-3 px-5 m-1 hover:bg-blue-200 ${
-              selectedAllergies.includes(option) ? "bg-blue-200" : ""
-            }`}
+          <div
+            key={option.name}
+            className={`flex items-start border border-gray-100 rounded-md lg:border-2`}
+            style={{ backgroundColor: selectedOptions.includes(option.name) ? "#BFDBFE" : "" }}
           >
-            {option}
-          </button>
+            <label className="flex items-center w-full gap-2">
+              <button
+                onClick={() => handleOptionSelect(option.name)}
+                className={`py-3 px-4 w-full text-left`}
+                style={{ backgroundColor: selectedOptions.includes(option.name) ? "#BFDBFE" : "" }}
+              >
+                <div>
+                  <span className="font-bold">{option.name}</span>
+                  <p className="text-sm">{option.description}</p>
+                </div>
+              </button>
+              <input
+                type="checkbox"
+                onChange={() => handleOptionSelect(option.name)}
+                checked={selectedOptions.includes(option.name)}
+                id={`checkbox-${option.name}`}
+                className="custom-checkbox mr-3"
+              />
+            </label>
+          </div>
         ))}
       </div>
-      <Healthissues />
     </div>
   );
 };

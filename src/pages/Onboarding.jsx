@@ -11,7 +11,6 @@ import MealServings from "../Components/MealServings";
 import Navbar from "../Components/Header.jsx";
 import Button from "../Components/button.jsx";
 import { Link } from "react-router-dom";
-// import SignUp from "./SignUp.jsx";
 
 const Onboarding = () => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -28,8 +27,6 @@ const Onboarding = () => {
     }, 700);
   };
 
-  const pageNum = currentPage - 1;
-
   const backButton = () => {
     console.log("you skipped");
     setShowPage(false);
@@ -38,16 +35,25 @@ const Onboarding = () => {
     }, 600);
   };
 
+  const buttonContainerStyles = `
+    flex justify-center absolute bottom-4 left-0 right-0 w-full
+    transition-opacity duration-700
+  `;
+
+  const buttonStyles = `
+    w-full max-w-xs
+  `;
+
   return (
     <>
-      <div className="flex flex-col lg:items-center justify-around">
+      <div className="flex flex-col items-center justify-around min-h-screen">
         {currentPage > 1 && currentPage <= 8 && (
           <Navbar
             className={`transition-opacity duration-700 ${
               showPage ? "opacity-100" : "opacity-0"
             }`}
             num_of_page={7}
-            current_page={pageNum}
+            current_page={currentPage - 1}
             previous={backButton}
           />
         )}
@@ -64,37 +70,27 @@ const Onboarding = () => {
           {currentPage === 6 && <MealServings />}
           {currentPage === 7 && <Budget />}
           {currentPage === 8 && <PlanMeal />}
-          {/* {currentPage === 9 && <SignUp />} */}
         </div>
 
         {currentPage > 1 && (
-          <div
-            className={`flex lg:justify-center absolute bottom-4 mx-auto w-full transition-opacity duration-700`}
-          >
-            {currentPage >= 5 && currentPage <= 8 && (
-              <Button
-                btnClicked={changeScreen}
-                className={`transition-opacity duration-700 ${
-                  showPage ? "opacity-100" : "opacity-0"
-                }`}
-              >
-                Skip
-              </Button>
-            )}
+          <div className={buttonContainerStyles}>
             {currentPage < 8 && (
               <Button
                 color={"blue"}
                 btnClicked={changeScreen}
-                className={`transition-opacity duration-700 ${
-                  showPage ? "opacity-100" : "opacity-0"
-                }`}
+                className={`transition-opacity duration-700 ${showPage ? "opacity-100" : "opacity-0"} ${buttonStyles}`}
               >
                 Next
               </Button>
             )}
             {currentPage === 8 && (
               <Link to="/signup">
-                <Button color={"blue"}>Next</Button>
+                <Button
+                  color={"#4268fb"}
+                  className={`${buttonStyles}`}
+                >
+                  Next
+                </Button>
               </Link>
             )}
           </div>

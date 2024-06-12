@@ -179,7 +179,7 @@ const AgeAndBMI = () => {
             <p>Status: <strong>{bmiStatus}</strong></p>
           </div>
         )}
-        <p className="mt-4 text-xs text-gray-600 mb-8">
+        <p className="mt-4 text-xs text-gray-600 mb-10">
           This helps us calculate your body mass that may lead to health problems.
         </p>
       </div>
