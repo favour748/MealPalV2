@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Link } from "react-router-dom";
+
 
 function MealPlanPoints() {
 
@@ -10,9 +10,7 @@ function MealPlanPoints() {
     function createMealPlan() {
 
         // to navigate to the meal plan page
-        //navigate('/home');
-        <Link to ={"./MealListing"}></Link>
-
+        navigate('/mealplan');
     }
 
     
