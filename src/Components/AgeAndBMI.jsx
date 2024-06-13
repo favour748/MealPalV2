@@ -8,7 +8,6 @@ const AgeAndBMI = () => {
   const [bmi, setBMI] = useState("");
   const [bmiStatus, setBMIStatus] = useState("");
   const [gender, setGender] = useState("");
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
   const [ageColor, setAgeColor] = useState("text-gray-500"); 
 
   const calculateBMI = () => {
@@ -41,12 +40,10 @@ const AgeAndBMI = () => {
 
   const handleHeightChange = (e) => {
     setHeight(e.target.value);
-    updateButtonDisabledState(e.target.value, weight);
   };
 
   const handleWeightChange = (e) => {
     setWeight(e.target.value);
-    updateButtonDisabledState(height, e.target.value);
   };
 
   const handleGenderChange = (e) => {
@@ -57,14 +54,6 @@ const AgeAndBMI = () => {
     setAgeColor("text-blue-500"); 
   };
 
-  const updateButtonDisabledState = (newHeight, newWeight) => {
-    if (newHeight && newWeight) {
-      setIsButtonDisabled(false);
-    } else {
-      setIsButtonDisabled(true);
-    }
-  };
-
   const clearForm = () => {
     setAge("");
     setHeight("");
@@ -72,7 +61,6 @@ const AgeAndBMI = () => {
     setBMI("");
     setBMIStatus("");
     setGender("");
-    setIsButtonDisabled(true);
     setAgeColor("text-gray-500"); 
   };
 
@@ -101,28 +89,28 @@ const AgeAndBMI = () => {
         {/* Gender section */}
         <div className="flex mb-10 max-w-screen-md items-center">
           <span className="mr-4">Gender</span>
-          <input
-            type="radio"
-            id="male"
-            name="gender"
-            value="male"
-            checked={gender === 'male'}
-            onChange={handleGenderChange}
-            className={`ml-5 h-6 w-6 ${gender !== 'male' ? 'text-gray-500' : ''}`}
-            style={{ color: gender !== 'male' ? '#777777' : '#101010' }}
-          />
-          <label htmlFor="male" className="ml-2">Male</label>
-          <input
-            type="radio"
-            id="female"
-            name="gender"
-            value="female"
-            checked={gender === 'female'}
-            onChange={handleGenderChange}
-            className={`ml-7 h-6 w-6 ${gender !== 'female' ? 'text-gray-500' : ''}`}
-            style={{ color: gender !== 'female' ? '#777777' : '#101010' }}
-          />
-          <label htmlFor="female" className="ml-2">Female</label>
+          <label className="custom-radio">
+            <input
+              type="radio"
+              name="gender"
+              value="male"
+              checked={gender === 'male'}
+              onChange={handleGenderChange}
+            />
+            <span className="radio-indicator"></span>
+            <span className="ml-2">Male</span>
+          </label>
+          <label className="custom-radio ml-7">
+            <input
+              type="radio"
+              name="gender"
+              value="female"
+              checked={gender === 'female'}
+              onChange={handleGenderChange}
+            />
+            <span className="radio-indicator"></span>
+            <span className="ml-2">Female</span>
+          </label>
         </div>
         {/* End of Gender section */}
         
@@ -135,7 +123,7 @@ const AgeAndBMI = () => {
             placeholder="meters"
             value={height}
             onChange={handleHeightChange}
-            className="border p-3 w-70 lg:w-80 border-solid border-2 border-gray-800 shadow-custom focus:outline-none shadow-xl"
+            className="border p-3 w-70 lg:w-80 border-solid border-2 border-gray-800 shadow-custom focus:outline-none shadow-xl placeholder-bottom-right"
             style={{ backgroundColor: '#ffffff', color: '#101010' }}
           />
         </div>
@@ -150,7 +138,7 @@ const AgeAndBMI = () => {
             placeholder="kilograms"
             value={weight}
             onChange={handleWeightChange}
-            className="border p-3 w-70 lg:w-80 border-solid border-2 border-gray-800 shadow-custom focus:outline-none shadow-xl"
+            className="border p-3 w-70 lg:w-80 border-solid border-2 border-gray-800 shadow-custom focus:outline-none shadow-xl placeholder-bottom-right"
             style={{ backgroundColor: '#ffffff', color: '#101010' }}
           />
         </div>
@@ -159,9 +147,8 @@ const AgeAndBMI = () => {
         <div className="flex mt-8 justify-center max-w-screen-md mb-3">
           <button
             onClick={calculateBMI}
-            disabled={isButtonDisabled}
-            className={`px-3 py-2 w-1/3 md:w-40 text-white rounded-md font-semibold ${isButtonDisabled ? "" : "hover:bg-neonblue"}`}
-            style={{ backgroundColor: isButtonDisabled ? '#4268FB' : '#FFFFFF' }}
+            className="px-3 py-2 w-1/3 md:w-40 text-white rounded-md font-semibold hover:bg-neonblue"
+            style={{ backgroundColor: '#4268FB' }}
           >
             Calculate
           </button>

@@ -1,9 +1,7 @@
-import React, { useEffect } from "react";
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import GetStarted from "../Components/GetStarted.jsx";
 import AgeAndBMI from "../Components/AgeAndBMI.jsx";
 import Dislikes from "../Components/Dislikes.jsx";
-import Budget from "../Components/Budget.jsx";
 import PlanMeal from "../Components/PlanMeal.jsx";
 import DietSelection from "../Components/DietSelection";
 import AllergySelection from "../Components/AllergySelection";
@@ -47,12 +45,12 @@ const Onboarding = () => {
   return (
     <>
       <div className="flex flex-col items-center justify-around min-h-screen">
-        {currentPage > 1 && currentPage <= 8 && (
+        {currentPage > 1 && currentPage <= 7 && (
           <Navbar
             className={`transition-opacity duration-700 ${
               showPage ? "opacity-100" : "opacity-0"
             }`}
-            num_of_page={7}
+            num_of_page={6}
             current_page={currentPage - 1}
             previous={backButton}
           />
@@ -68,13 +66,12 @@ const Onboarding = () => {
           {currentPage === 4 && <DietSelection />}
           {currentPage === 5 && <AllergySelection />}
           {currentPage === 6 && <MealServings />}
-          {currentPage === 7 && <Budget />}
-          {currentPage === 8 && <PlanMeal />}
+          {currentPage === 7 && <PlanMeal />}
         </div>
 
         {currentPage > 1 && (
           <div className={buttonContainerStyles}>
-            {currentPage < 8 && (
+            {currentPage < 7 && (
               <Button
                 color={"blue"}
                 btnClicked={changeScreen}
@@ -83,7 +80,7 @@ const Onboarding = () => {
                 Next
               </Button>
             )}
-            {currentPage === 8 && (
+            {currentPage === 7 && (
               <Link to="/signup">
                 <Button
                   color={"#4268fb"}
