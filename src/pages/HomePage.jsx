@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import homepage from "../assets/homepage.png";
 import fetchMeals from "../loadData";
 import SearchBar from "../Components/SearchBar";
+import recommend from "../assets/recommend.png";
 
 function HomePage() {
   const [meals, setMeals] = useState([]);
@@ -47,7 +48,8 @@ function HomePage() {
     <div className="p-6">
       <SearchBar onSearch={handleSearch} />
        <div
-        className={`w-full h-[200px] flex items-end mt-5 p-4 rounded shrink-0  bg-no-repeat overflow-hidden`}
+        className={`w-full h-[200px] flex items-end mt-5
+         p-4 rounded shrink-0  bg-no-repeat overflow-hidden`}
         style={{
           background: `url(${homepage})`,
           backgroundSize: "cover",
@@ -82,17 +84,27 @@ function HomePage() {
                   to={`/preview/${singleMeal?.id}`}
                   className="hover:text-slate-500"
                 >
-                  <p className="font-semibold text-[13px] line-clamp-1 md:text-[15px] lg:text-[20px]">
+                  <p className="font-semibold text-[13px] line-clamp-1
+                   md:text-[15px] lg:text-[20px]">
                     {singleMeal?.title}
                   </p>
                 </Link>
 
-                <div className="flex gap-3 items-center justify-start text-[12px] md:text-[15px]">
+                <div className="flex gap-3 items-center justify-start
+                 text-[12px] md:text-[15px]">
                   <span className="bg-[#F0F6FF] rounded-md px-2 py-1 ">
-                    Popular
+                    Meal Type
                   </span>
                   <GoDotFill className="text-pink-200" />
-                  <span>Vegan Only</span>
+                  <span className="bg-[#FFF5F0] rounded-md px-2 py-1">
+                    Vegan Only</span>
+                  <span className="bg-[#FFF5F0] rounded-md px-2 py-1">
+                    Cousine Tag</span>
+                    <div>
+                    <img src={recommend} alt="recommend Icon" className="h-4 w-4" />
+                      <span className="bg-[#CDFFCB] rounded-md px-2 py-1">
+                        Recommened</span>
+                    </div>
                 </div>
               </div>
             </div>
@@ -108,7 +120,9 @@ function HomePage() {
       <button
         onClick={handleLoadMore}
         style={{ display: filteredMeals?.length == 0 ? "none" : "block" }}
-        className="border border-blue-500 text-black bg-white px-4 py-1 w-[80%] md:w-[50%] lg:w[40%] rounded-md my-6"
+        className="border border-blue-500 text-black
+         bg-white px-4 py-1 w-[80%] md:w-[50%] lg:w[40%]
+          rounded-md my-6"
       >
         Load More
       </button>
@@ -116,19 +130,26 @@ function HomePage() {
           <Link to={`/mealplan`}>
             <button
               type="btn"
-              className="px-2 py-1 border border-green-700 hover:bg-[#8096ee] bg-green-700 text-white rounded-3xl text-sm h-10 w-40"
-              disabled
+              className="px-2 py-1 border  
+              hover:bg-[#CDFFCB] hover:text-black
+               bg-green-700 text-black rounded-3xl 
+               text-sm h-10 w-40"
             >
               Create Meal Plan
             </button>
           </Link>
+          <Link to={`/mealhistory`}>
           <button
             type="btn"
-            className="px-2 py-1 border border-green-700 text-black   rounded-3xl text-sm h-10 w-40"
+            className="px-2 py-1 border border-green-700
+             text-black hover:bg-green-700
+              hover:text-black  rounded-3xl text-sm h-10 w-40"
             disabled
           >
             Meal History
           </button>
+          </Link>
+    
         </div>
     </div>
   );
