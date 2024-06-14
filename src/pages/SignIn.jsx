@@ -8,8 +8,9 @@ import {
   signInWithEmailAndPassword,
   signInWithRedirect,
   getRedirectResult,
-} from "@firebase/auth";
-import { GoogleAuthProvider, FacebookAuthProvider } from "firebase/auth";
+  GoogleAuthProvider,
+  FacebookAuthProvider
+} from "firebase/auth";
 import Hide from "../assets/hide.png";
 import View from "../assets/view.png";
 import Back from "../assets/back.png";
