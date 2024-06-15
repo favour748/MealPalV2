@@ -70,10 +70,10 @@ function HomePage() {
               className="flex items-center gap-2 overflow-hidden w-full"
               key={`${singleMeal?.id}-${index}`}
             >
-              <div className="w-[100px] h-[100px] overflow-hidden rounded-md shrink-0">
+              <div className="w-[100px] h-[100px] overflow-hidden rounded-lg shrink-0">
                 <img
                   src={singleMeal.image}
-                  className="w-[100px] h-[100px] object-contain"
+                  className="w-[100px] h-[100px] object-contain rounded-lg"
                   alt={singleMeal?.title}
                   loading="lazy"
                 />
@@ -95,7 +95,7 @@ function HomePage() {
                   <span className="bg-[#F0F6FF] rounded-md px-2 py-1 ">
                     Meal Type
                   </span>
-                  <GoDotFill className="text-pink-200" />
+                  
                   <span className="bg-[#FFF5F0] rounded-md px-2 py-1">
                     Vegan Only</span>
                   <span className="bg-[#FFF5F0] rounded-md px-2 py-1">
@@ -120,7 +120,7 @@ function HomePage() {
       <button
         onClick={handleLoadMore}
         style={{ display: filteredMeals?.length == 0 ? "none" : "block" }}
-        className="border border-blue-500 text-black
+        className="border border-green-700 text-black
          bg-white px-4 py-1 w-[80%] md:w-[50%] lg:w[40%]
           rounded-md my-6"
       >
@@ -132,7 +132,7 @@ function HomePage() {
               type="btn"
               className="px-2 py-1 border  
               hover:bg-[#CDFFCB] hover:text-black
-               bg-green-700 text-black rounded-3xl 
+               bg-green-700 text-white rounded-3xl 
                text-sm h-10 w-40"
             >
               Create Meal Plan
@@ -144,7 +144,6 @@ function HomePage() {
             className="px-2 py-1 border border-green-700
              text-black hover:bg-green-700
               hover:text-black  rounded-3xl text-sm h-10 w-40"
-            disabled
           >
             Meal History
           </button>
