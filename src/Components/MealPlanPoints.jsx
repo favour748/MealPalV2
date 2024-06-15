@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
+
 function MealPlanPoints() {
 
     // Get the history object from React Router
@@ -9,8 +10,7 @@ function MealPlanPoints() {
     function createMealPlan() {
 
         // to navigate to the meal plan page
-        navigate('/home');
-
+        navigate('/mealplan');
     }
 
     
