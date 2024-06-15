@@ -18,14 +18,14 @@ const GetStarted = ({ onNext }) => {
       </p>
       <button
         onClick={onNext}
-        className="w-80 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-4 px-4 rounded-md"
+        className="w-80 bg-green-700 hover:bg-green-200 hover:text-green-700 text-white font-semibold py-4 px-4 rounded-md"
       >
         Get Started
       </button>
       <p className="text-gray-300 mt-4">
         Already have an account?{" "}
         <span>
-          <Link to="/signin" className="text-blue-500 hover:text-blue-600">
+          <Link to="/signin" className="text-green-200 hover:text-green-700">
             Sign in
           </Link>
         </span>
