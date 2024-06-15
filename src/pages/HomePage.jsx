@@ -142,7 +142,7 @@ function HomePage() {
           <button
             type="btn"
             className="px-2 py-1 border border-green-700
-             text-black hover:bg-green-700
+             text-black hover:bg-green-200
               hover:text-black  rounded-3xl text-sm h-10 w-40"
           >
             Meal History

@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import suffiximg from '../assets/images/suffix.png'
+
 
 export default function Referral() {
     const [referralLink, setReferralLink] = useState('');
@@ -91,15 +91,15 @@ export default function Referral() {
     
 
     return (
-        <><div className='flex justify-center items-center'>
-            <div className=" text-left inline-block w-80 bg-slate-100 border mt-3 pb-2 px-3 pt-3 rounded-xl">
+        <><div className={`flex justify-center items-center`}>
+            <div className=" text-left inline-block w-80 h-46 border mt-6 pb-2 px-3 pt-3 bg-black text-white bg-opacity-50 rounded-xl">
               <h1 className="text-3xl mb-2"><span id="count" className="font-semibold">{copiedCount}</span> Pts</h1>
               <p className="text-sm mb-2 ">Reach 400 points and get a meal on us!</p>
-              <button id='redeem' onClick={redeemPoints} disabled={copiedCount < 400} className="bg-black hover:bg-slate-700 text-white rounded-md px-2 pb-1">Redeem Points</button>
+              <button id='redeem' onClick={redeemPoints} disabled={copiedCount < 400} className="bg-white p-1 text-black border-2 w-3/6 border-green-700 hover:bg-green-200 px-2  mr-5  rounded-2xl  text-sm">Redeem Points</button>
             </div>
           </div>
           <div className='flex justify-center items-center'>
-            <div className="text-left inline-block w-80  bg-slate-100 border pb-2 px-3 pt-3 rounded-xl mt-4">
+            <div className="text-left inline-block w-80 h-46 bg-black bg-opacity-50 text-white border pb-2 px-3 pt-3 rounded-xl mt-6">
                 <p className="font-semibold mb-2">Invite a friend</p>
                 <p className="text-sm mb-2 ">Earn 10 points for every friend that signs up.</p>
                 {isLoggedIn && (
@@ -133,7 +133,7 @@ export default function Referral() {
                 
             </div>
           </div>
-          <div className='flex justify-center items-center mt-4'><img src={suffiximg} alt="a suffix-image"/></div>
+          {/*<div className='flex justify-center items-center mt-4'><img src={suffiximg} alt="a suffix-image"/></div>*/}
         </>
     );
 }
