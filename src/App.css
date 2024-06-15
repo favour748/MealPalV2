@@ -40,6 +40,11 @@
 .read-the-docs {
   color: #888;
 } */
+ 
+.custom-radio-btn {
+  width: 20px; 
+  height: 20px; 
+}
 
 .custom-checkbox {
   width: 20px;
