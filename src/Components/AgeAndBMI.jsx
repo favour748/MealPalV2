@@ -123,7 +123,7 @@ justify-center px-5" style={{ backgroundColor: '#ffffff', color: '#101010' }}>
         placeholder="meters"
         value={height}
         onChange={handleHeightChange}
-        className="border p-3 w-70 lg:w-80 border-solid border-2 border-gray-800 shadow-custom focus:outline-none shadow-xl placeholder-bottom-right"
+        className="border p-3 w-70 lg:w-80 border-solid border-2 border-gray-800 shadow-custom focus:outline-none shadow-xl"
         style={{ backgroundColor: '#ffffff', color: '#101010' }}
       />
     </div>
@@ -138,7 +138,7 @@ justify-center px-5" style={{ backgroundColor: '#ffffff', color: '#101010' }}>
         placeholder="kilograms"
         value={weight}
         onChange={handleWeightChange}
-        className="border p-3 w-70 lg:w-80 border-solid border-2 border-gray-800 shadow-custom focus:outline-none shadow-xl placeholder-bottom-right"
+        className="border p-3 w-70 lg:w-80 border-solid border-2 border-gray-800 shadow-custom focus:outline-none shadow-xl"
         style={{ backgroundColor: '#ffffff', color: '#101010' }}
       />
     </div>
