@@ -20,6 +20,7 @@ import bottomBg from "../assets/bottom-bg.jpg";
 
 const SignUp = () => {
   const [isLoading, setIsLoading] = useState(false);
+  const [termsChecked, setTermsChecked] = useState(false); 
   const { register, handleSubmit, formState, reset } = useForm();
   const { errors } = formState;
   const navigate = useNavigate();
@@ -32,6 +33,11 @@ const SignUp = () => {
   };
 
   const handleSignUp = ({ fullname, email, password }) => {
+    if (!termsChecked) {
+      toast.error("Please accept Terms and Conditions.");
+      return;
+    }
+
     setIsLoading(true);
     createUserWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
@@ -178,15 +184,16 @@ const SignUp = () => {
               </span>
             </div>
 
-            <div className="text-center">
-              <button
-                className="bg-[rgb(66,104,251)] text-white text-lg font-semibold cursor-pointer py-4 px-4 rounded-lg w-full my-3"
-                type="submit"
-              >
-                Sign Up
-              </button>
-              <p>
-                By using this app, you agree to our{" "}
+            <div className="flex items-center mb-4 w-full">
+              <input
+                type="checkbox"
+                id="terms"
+                className="mr-2"
+                checked={termsChecked}
+                onChange={(e) => setTermsChecked(e.target.checked)}
+              />
+              <label htmlFor="terms" className="text-neutral-500">
+                I agree to the{" "}
                 <a
                   href="https://docs.google.com/document/d/15ONH41KmOXuOUFBbTSLmjOb2Q-xufJC2jQeK3HOB0dw/edit"
                   className="text-blue-500 font-bold"
@@ -195,7 +202,17 @@ const SignUp = () => {
                 >
                   Terms of use and Conditions
                 </a>
-              </p>
+              </label>
+            </div>
+
+            <div className="text-center">
+              <button
+                className="bg-[rgb(66,104,251)] text-white text-lg font-semibold cursor-pointer py-4 px-4 rounded-lg w-full my-3"
+                type="submit"
+                disabled={!termsChecked} 
+              >
+                Sign Up
+              </button>
             </div>
           </form>
 
