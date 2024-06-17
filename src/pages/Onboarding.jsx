@@ -11,17 +11,18 @@ import Button from "../Components/button.jsx";
 const Onboarding = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [showPage, setShowPage] = useState(false);
-  const totalPages = 6; 
+  const [bmiCalculated, setBmiCalculated] = useState(false); // State to track BMI calculation
+  const totalPages = 6;
 
   useEffect(() => {
-    setShowPage(true); 
+    setShowPage(true);
   }, [currentPage]);
 
   const changeScreen = () => {
     setShowPage(false);
     setTimeout(() => {
       setCurrentPage(currentPage + 1);
-      setShowPage(true); 
+      setShowPage(true);
     }, 700);
   };
 
@@ -29,12 +30,16 @@ const Onboarding = () => {
     setShowPage(false);
     setTimeout(() => {
       setCurrentPage(currentPage - 1);
-      setShowPage(true); 
+      setShowPage(true);
     }, 600);
   };
 
+  const handleBmiCalculated = () => {
+    setBmiCalculated(true);
+  };
+
   const buttonContainerStyles = `
-    flex justify-center absolute bottom-4 left-0 right-0 w-full
+    flex justify-center fixed bottom-4 left-0 right-0 w-full
     transition-opacity duration-700
   `;
 
@@ -44,7 +49,7 @@ const Onboarding = () => {
 
   return (
     <>
-      <div className="flex flex-col items-center justify-around min-h-screen">
+      <div className="flex flex-col items-center justify-between min-h-screen">
         {currentPage > 1 && currentPage <= totalPages && (
           <Navbar
             className={`transition-opacity duration-700 ${
@@ -65,16 +70,22 @@ const Onboarding = () => {
           {currentPage === 3 && <DietSelection />}
           {currentPage === 4 && <AllergySelection />}
           {currentPage === 5 && <HealthIssuesForm />}
-          {currentPage === 6 && <AgeAndBMI />}
+          {currentPage === 6 && <AgeAndBMI onBmiCalculated={handleBmiCalculated} />}
         </div>
 
         {currentPage > 1 && (
           <div className={buttonContainerStyles}>
             <Button
               color={"blue"}
-              btnClicked={currentPage < totalPages ? changeScreen : undefined}
-              className={`transition-opacity duration-700 ${showPage ? "opacity-100" : "opacity-0"} ${buttonStyles}`}
-              to={currentPage === totalPages ? "/signup" : undefined} 
+              btnClicked={
+                currentPage < totalPages 
+                  ? changeScreen 
+                  : (bmiCalculated ? changeScreen : undefined)
+              }
+              className={`transition-opacity duration-700 ${showPage ? "opacity-100" : "opacity-0"} ${buttonStyles} ${
+                currentPage === totalPages && !bmiCalculated ? "opacity-50 cursor-not-allowed" : ""
+              }`}
+              to={currentPage === totalPages && bmiCalculated ? "/signup" : undefined}
             >
               {currentPage === totalPages ? "Finish" : "Next"}
             </Button>
