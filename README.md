@@ -24,8 +24,8 @@ The landing page includes the welcoming address, get started function and sign i
 
 The get started process is the first step to enjoy the full benefits of our meal planning app. Follow these steps:
 
-- Open the app and click on the "get started" button.
-- Select the age bmi, allergies, diseases, diets and others to know your preferences.
+- Open the app and click on the "Get Started" button.
+- Select your goal, dietary preferences, allergies, health conditions, and enter your BMI to calculate your body mass index.
 - Enter your email address and create a strong password.
 - Fill in your personal details, including your name and contact information.
 - Review our Terms and Conditions and Privacy Policy.
