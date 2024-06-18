@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 
 const GetStarted = ({ onNext }) => {
   return (
+
     <div className="min-h-screen w-screen flex flex-col">
       <div
         className="flex-[5]"
