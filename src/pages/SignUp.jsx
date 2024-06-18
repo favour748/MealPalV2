@@ -63,16 +63,7 @@ const SignUp = () => {
   };
 
   const providerSignIn = (provider) => {
-    signInWithRedirect(auth, provider)
-      .then((result) => {
-        const user = result.user;
-        console.log(user.email);
-        navigate("/home");
-      })
-      .catch((err) => {
-        const error = err.code;
-        toast.error(err.message);
-      });
+    signInWithRedirect(auth, provider);
   };
 
   useEffect(() => {
@@ -80,6 +71,7 @@ const SignUp = () => {
       try {
         const response = await getRedirectResult(auth);
         if (response) {
+          console.log('Redirect result:', response);
           navigate("/home");
         }
       } catch (error) {
@@ -227,4 +219,3 @@ const SignUp = () => {
 };
 
 export default SignUp;
-
