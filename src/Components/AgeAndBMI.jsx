@@ -12,8 +12,8 @@ const AgeAndBMI = ({ onBmiCalculated, navigate }) => {
 
   const calculateBMI = () => {
     if (height && weight) {
-      const heightInMeters = parseFloat(height); // Ensure height is in meters
-      const weightInKg = parseFloat(weight); // Ensure weight is in kilograms
+      const heightInMeters = parseFloat(height);
+      const weightInKg = parseFloat(weight); 
 
       if (heightInMeters <= 0 || weightInKg <= 0) {
         toast.error("Height and weight must be greater than zero");
