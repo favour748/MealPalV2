@@ -45,10 +45,10 @@ function HomePage() {
   };
 
   return (
-    <div className="p-6">
+    <div className="p-6 lg:ml-28 lg:mr-28">
       <SearchBar onSearch={handleSearch} />
       <div
-        className={`w-full h-44 flex items-end mt-5
+        className={`w-full h-44 lg:h-96 flex items-end mt-5
          p-4 rounded shrink-0  bg-no-repeat overflow-hidden`}
         style={{
           background: `url(${homepage})`,
@@ -67,10 +67,10 @@ function HomePage() {
               className="flex items-center gap-2 overflow-hidden w-full"
               key={`${singleMeal?.id}-${index}`}
             >
-              <div className="w-[100px] h-[100px] overflow-hidden rounded-lg shrink-0">
+              <div className="w-[100px] h-[120px] overflow-hidden shrink-0">
                 <img
                   src={singleMeal.image}
-                  className="w-[100px] h-[100px] object-contain rounded-lg"
+                  className="w-[100px] h-[130px] object-contain rounded-lg"
                   alt={singleMeal?.title}
                   loading="lazy"
                 />
@@ -91,18 +91,23 @@ function HomePage() {
 
                 <div
                   className="flex gap-3 items-center justify-start
-                 text-[12px] md:text-[15px]"
+                 text-[12px] md:text-[15px] text-nowrap flex-wrap"
                 >
+                  <div className="flex items-center gap-[11px]">
                   <span className="bg-[#F0F6FF] rounded-md px-2 py-1 ">
                     Meal Type
                   </span>
-
+                  </div>
+                  <div className="flex items-center gap-[11px]">
                   <span className="bg-[#FFF5F0] rounded-md px-2 py-1">
                     Vegan Only
                   </span>
-                  <span className="bg-[#FFF5F0] rounded-md px-2 py-1">
+                  </div>
+                 <div className="flex items-center gap-[11px]">
+                 <span className="bg-[#FFF5F0] rounded-md px-2 py-1">
                     Cousine Tag
                   </span>
+                 </div>
                   <div className="flex p-1 justify-center items-center gap-1 rounded-md bg-[#CDFFCB]">
                     <img
                       src={recommend}
