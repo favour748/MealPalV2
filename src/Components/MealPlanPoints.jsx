@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-
+import SearchBar from "../Components/SearchBar";
 
 function MealPlanPoints() {
 
@@ -19,13 +19,22 @@ function MealPlanPoints() {
         navigate('/saved');
     }
 
+  
     return(
         <>
-            <div className='flex justify-center items-center'>
-                <div className="bg-black bg-opacity-50 text-white rounded-xl  inline-block w-80 h-46 border pb-2 text-left px-3 pt-3 mt-8">
-                    <h1 className="font-semibold text-2xl ">0 Meal Plan</h1>
-                    <p className="  py-1 text-sm pb-1 ">Ready for a delicious meal? Earn 20 points per meal.</p>
-                    <button onClick={createMealPlan} className="  bg-green-700 p-1 text-white  hover:bg-green-200 hover:text-black w-3/6 px-2  mr-5  rounded-xl  text-sm ">Create Meal Plan</button>
+        
+            <div className='flex flex-col justify-center items-center mt-2'>
+            <SearchBar />
+                <div className="bg-[#F0F6FF]  text-black rounded-xl flex w-[359px] h-[180px] p-3
+                 items-center content-center gap-x-4 gap-y-[11px] flex-shrink-0 flex-wrap mt-6">
+                    <h1 className="font-manrope text-2xl font-semibold leading-[140%] ">0 Meal Plan</h1>
+                    <p className="  font-manrope text-base font-normal leading-[140%] text-[#707070]">
+                        Ready for a delicious meal? Earn 20 points per meal.</p>
+                    <button onClick={createMealPlan} className="  bg-blue-600 p-1 text-white 
+                     hover:bg-blue-200 hover:text-black w-3/6
+                     mr-5 flex px-4  py-[7.5px] justify-center items-center rounded-3xl  text-sm font-manrope  ">
+                        Create Meal Plan
+                        </button>
                     
                 </div>
             </div>

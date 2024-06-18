@@ -48,7 +48,7 @@ function HomePage() {
     <div className="p-6">
       <SearchBar onSearch={handleSearch} />
       <div
-        className={`w-full h-[200px] flex items-end mt-5
+        className={`w-full h-44 flex items-end mt-5
          p-4 rounded shrink-0  bg-no-repeat overflow-hidden`}
         style={{
           background: `url(${homepage})`,
