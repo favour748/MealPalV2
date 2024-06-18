@@ -12,11 +12,18 @@ const AgeAndBMI = ({ onBmiCalculated, navigate }) => {
 
   const calculateBMI = () => {
     if (height && weight) {
-      const heightInMeters = height / 100;
-      const bmiValue = (weight / heightInMeters ** 2).toFixed(2);
+      const heightInMeters = parseFloat(height); // Ensure height is in meters
+      const weightInKg = parseFloat(weight); // Ensure weight is in kilograms
+
+      if (heightInMeters <= 0 || weightInKg <= 0) {
+        toast.error("Height and weight must be greater than zero");
+        return;
+      }
+      
+      const bmiValue = (weightInKg / (heightInMeters ** 2)).toFixed(2);
       setBMI(bmiValue);
       localStorage.setItem("bmi", bmiValue);
-      determineBmiStatus(bmiValue);
+      determineBmiStatus(parseFloat(bmiValue));
       onBmiCalculated(); 
     } else {
       toast.error("Please enter height and weight");
@@ -92,22 +99,22 @@ const AgeAndBMI = ({ onBmiCalculated, navigate }) => {
         </div>
         <div className="flex space-x-4 w-full max-w-screen-md">
           <label htmlFor="height" className="flex flex-col gap-2 w-full">
-            Height
+            Height (meters)
             <input
               type="number"
               id="height"
-              placeholder="0Metres"
+              placeholder="0 meters"
               value={height}
               onChange={handleHeightChange}
               className="border rounded p-3 mb-4 w-full"
             />
           </label>
           <label htmlFor="weight" className="flex flex-col gap-2 w-full">
-            Weight
+            Weight (kg)
             <input
               type="number"
               id="weight"
-              placeholder="0Kg"
+              placeholder="0 kg"
               value={weight}
               onChange={handleWeightChange}
               className="border rounded p-3 mb-4 w-full"
