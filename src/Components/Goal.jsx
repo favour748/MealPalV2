@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const Goal = () => {
+const Goal = ({ onGoalSelected }) => {
   const goals = [
     { name: "Lose weight" },
     { name: "Maintain weight" },
@@ -12,7 +12,9 @@ const Goal = () => {
   const [selectedGoal, setSelectedGoal] = useState("");
 
   const handleGoalSelect = (goalName) => {
-    setSelectedGoal(goalName === selectedGoal ? "" : goalName);
+    const newGoal = goalName === selectedGoal ? "" : goalName;
+    setSelectedGoal(newGoal);
+    onGoalSelected(newGoal); 
   };
 
   useEffect(() => {

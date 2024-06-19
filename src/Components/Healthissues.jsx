@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const HealthIssuesForm = () => {
+const HealthIssuesForm = ({ onHealthIssueSelected }) => {
   const healthIssues = [
     "Diabetes",
     "Ulcer",
@@ -13,7 +13,9 @@ const HealthIssuesForm = () => {
   const [selectedIssue, setSelectedIssue] = useState("");
 
   const handleIssueSelect = (issueName) => {
-    setSelectedIssue(issueName === selectedIssue ? "" : issueName);
+    const newSelectedIssue = issueName === selectedIssue ? "" : issueName;
+    setSelectedIssue(newSelectedIssue);
+    onHealthIssueSelected(newSelectedIssue !== ""); 
   };
 
   useEffect(() => {
