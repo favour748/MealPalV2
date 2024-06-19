@@ -140,7 +140,6 @@ export default function Referral() {
 
 
 import React, { useState, useEffect } from 'react';
-import suffiximg from '../assets/images/suffix.png'
 
 export default function Referral() {
     const [referralLink, setReferralLink] = useState('');
@@ -227,21 +226,22 @@ export default function Referral() {
     if (copiedCount >= 400) {
       document.getElementById('redeem').style.background = 'green'
     }
-
-    
-
+  
     return (
-        <><div className='flex justify-center items-center'>
-            <div className=" text-left inline-block w-80 bg-slate-100 border mt-3 pb-2 px-3 pt-3 rounded-xl">
-              <h1 className="text-3xl mb-2"><span id="count" className="font-semibold">{copiedCount}</span> Pts</h1>
-              <p className="text-sm mb-2 ">Reach 400 points and get a meal on us!</p>
-              <button id='redeem' onClick={redeemPoints} disabled={copiedCount < 400} className="bg-black hover:bg-slate-700 text-white rounded-md px-2 pb-1">Redeem Points</button>
+        <>
+        <div className={`flex justify-center items-center mt-6`}>
+            <div className=" bg-[#F0F6FF]  text-black rounded-xl flex w-[359px] h-[180px] p-3 items-center content-center gap-x-4 gap-y-[11px] flex-shrink-0 flex-wrap">
+              <h1 className="font-manrope text-2xl font-semibold leading-[140%]"><span id="count" className="font-manrope text-2xl font-semibold leading-[140%]">{copiedCount}</span> Pts</h1>
+              <p className="font-manrope text-base font-normal leading-[140%]  ">Reach 400 points and get a meal on us!
+              You have referred 0 friends so far.</p>
+              <button id='redeem' onClick={redeemPoints} disabled={copiedCount < 400} className="bg-white p-1 text-black border-2 w-3/6 border-blue-600
+               hover:bg-blue-200  mr-5 flex px-4  py-[7.5px] justify-center items-center rounded-3xl font-manrope font-semibold text-sm">Redeem Points</button>
             </div>
           </div>
-          <div className='flex justify-center items-center'>
-            <div className="text-left inline-block w-80  bg-slate-100 border pb-2 px-3 pt-3 rounded-xl mt-4">
-                <p className="font-semibold mb-2">Invite a friend</p>
-                <p className="text-sm mb-2 ">Earn 10 points for every friend that signs up.</p>
+          <div className='flex justify-center items-center mt-6'>
+            <div className="bg-[#F0F6FF]  text-black rounded-xl flex w-[359px] h-[180px] p-3 items-center content-center gap-x-4 gap-y-[11px] flex-shrink-0 flex-wrap">
+                <p className="font-manrope text-2xl font-semibold leading-[140%]">Invite a friend</p>
+                <p className="font-manrope text-base font-normal leading-[140%]">Earn 10 points for every friend that signs up.</p>
                 {isLoggedIn && (
                 <div className="bg-white border rounded-lg inline-block w-[270px] relative px-2 py-2">
                     <input
@@ -273,7 +273,7 @@ export default function Referral() {
                 
             </div>
           </div>
-          <div className='flex justify-center items-center mt-4'><img src={suffiximg} alt="a suffix-image"/></div>
+          {/*<div className='flex justify-center items-center mt-4'><img src={suffiximg} alt="a suffix-image"/></div>*/}
         </>
     );
 }
