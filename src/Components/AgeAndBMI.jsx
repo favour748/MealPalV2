@@ -1,108 +1,146 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-const AgeAndBMI = () => {
-  const [ageRange, setAgeRange] = useState("");
+const AgeAndBMI = ({ onBmiCalculated, navigate }) => {
+  const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
   const [height, setHeight] = useState("");
   const [weight, setWeight] = useState("");
   const [bmi, setBMI] = useState("");
-  const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-
-  const ageRanges = ["18 - 24", "25 - 36", "37 - 50+"];
+  const [bmiStatus, setBmiStatus] = useState(""); 
 
   const calculateBMI = () => {
     if (height && weight) {
-      const heightInMeters = height / 100;
-      const bmiValue = (weight / heightInMeters ** 2).toFixed(2);
+      const heightInMeters = parseFloat(height);
+      const weightInKg = parseFloat(weight); 
+
+      if (heightInMeters <= 0 || weightInKg <= 0) {
+        toast.error("Height and weight must be greater than zero");
+        return;
+      }
+      
+      const bmiValue = (weightInKg / (heightInMeters ** 2)).toFixed(2);
       setBMI(bmiValue);
       localStorage.setItem("bmi", bmiValue);
+      determineBmiStatus(parseFloat(bmiValue));
+      onBmiCalculated(); 
     } else {
       toast.error("Please enter height and weight");
     }
   };
 
-  const handleAgeRange = (range) => {
-    setAgeRange(range);
-    localStorage.setItem("ageRange", range);
+  const determineBmiStatus = (bmi) => {
+    if (bmi < 18.5) {
+      setBmiStatus("Underweight");
+    } else if (bmi >= 18.5 && bmi < 24.9) {
+      setBmiStatus("Normal weight");
+    } else if (bmi >= 25 && bmi < 29.9) {
+      setBmiStatus("Overweight");
+    } else if (bmi >= 30) {
+      setBmiStatus("Obese");
+    }
   };
+
+  const handleAgeChange = (e) => {
+    setAge(e.target.value);
+    localStorage.setItem("age", e.target.value);
+  };
+
+  const handleGenderChange = (e) => {
+    setGender(e.target.value);
+    localStorage.setItem("gender", e.target.value);
+  };
+
   const handleHeightChange = (e) => {
     setHeight(e.target.value);
-    updateButtonDisabledState(e.target.value, weight);
   };
 
   const handleWeightChange = (e) => {
     setWeight(e.target.value);
-    updateButtonDisabledState(height, e.target.value);
   };
 
-  const updateButtonDisabledState = (newHeight, newWeight) => {
-    if (newHeight && newWeight) {
-      setIsButtonDisabled(false);
-    } else {
-      setIsButtonDisabled(true);
-    }
+  const handleSignUpNavigation = () => {
+    localStorage.setItem("previousRoute", window.location.pathname);
+    navigate("/signup");
   };
 
   return (
     <>
       <ToastContainer />
       <div className="flex flex-col min-h-screen lg:items-center justify-center px-5">
-        <h2 className="text-2xl font-extrabold mb-4">What's your age range?</h2>
-        <p className="mb-6">Age helps us understand your nutritional needs.</p>
-        <div className="flex mb-8 max-w-screen-md">
-          {ageRanges.map((range) => (
-            <button
-              key={range}
-              onClick={() => handleAgeRange(range)}
-              className={`px-5 py-3 mr-4 text-[18px] w-1/3 lg:w-80 rounded-md border lg:hover:bg-blue-200 ${
-                ageRange === range ? "bg-blue-200" : ""
-              }`}
+        <h2 className="text-2xl font-extrabold mb-4">Let's calculate your BMI?</h2>
+        <div className="flex flex-col w-full max-w-screen-md">
+          <label htmlFor="age" className="flex flex-col gap-2 mb-4 w-full">
+            Age
+            <input
+              type="number"
+              id="age"
+              placeholder="0 years"
+              value={age}
+              onChange={handleAgeChange}
+              className="border rounded p-3 w-full"
+            />
+          </label>
+          <label htmlFor="gender" className="flex flex-col gap-2 mb-8 w-full">
+            Gender
+            <select
+              id="gender"
+              value={gender}
+              onChange={handleGenderChange}
+              className="border rounded p-3 w-full"
             >
-              {range}
-            </button>
-          ))}
+              <option value="" disabled>Select</option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="other">Other</option>
+            </select>
+          </label>
         </div>
-        <h3 className="text-2xl font-extrabold mb-4">
-          Interested in Knowing your BMI?
-        </h3>
-        <div className="flex space-x-4">
-          <label htmlFor="height" className="flex flex-col gap-2">
-            Height{" "}
+        <div className="flex space-x-4 w-full max-w-screen-md">
+          <label htmlFor="height" className="flex flex-col gap-2 w-full">
+            Height (meters)
             <input
               type="number"
               id="height"
-              placeholder="Height in cm"
+              placeholder="0 meters"
               value={height}
               onChange={handleHeightChange}
-              className="border rounded p-3 mb-4 w-40 lg:w-80"
+              className="border rounded p-3 mb-4 w-full"
             />
           </label>
-          <label htmlFor="weight" className="flex flex-col gap-2">
-            Weight{" "}
+          <label htmlFor="weight" className="flex flex-col gap-2 w-full">
+            Weight (kg)
             <input
               type="number"
               id="weight"
-              placeholder="Weight in kg"
+              placeholder="0 kg"
               value={weight}
               onChange={handleWeightChange}
-              className="border rounded p-3 mb-4 w-40 lg:w-80"
+              className="border rounded p-3 mb-4 w-full"
             />
           </label>
         </div>
         <button
           onClick={calculateBMI}
-          disabled={isButtonDisabled}
-          className={`px-4 py-2 w-1/2 md:w-80 mt-4 bg-blue-500  text-white rounded-md font-semibold ${
-            isButtonDisabled ? "opacity-40" : "hover:bg-blue-600"
-          }`}
+          className="px-4 py-2 w-full max-w-screen-md mt-4 bg-gray-800 text-white rounded-md font-semibold hover:bg-gray-900"
         >
           Calculate BMI
         </button>
-        {bmi && (
-          <p className="mt-4 text-xl font-medium">
-            BMI: <strong>{bmi}</strong>
-          </p>
-        )}
+        <div className={`mt-4 w-full max-w-screen-md border text-center bg-blue-50 rounded-lg overflow-hidden ${bmi ? "bg-blue-200" : ""}`}>
+          {bmi ? (
+            <p className="p-3">
+              Your BMI: <strong>{bmi}</strong> - <strong>{bmiStatus}</strong>
+            </p>
+          ) : (
+            <p className="p-3">
+              Your BMI: <strong>0.0</strong>
+            </p>
+          )}
+        </div>
+        <p className="mt-4 text-sm text-left text-gray-400">
+          This helps us calculate your body mass that may lead to health problems.
+        </p>
       </div>
     </>
   );

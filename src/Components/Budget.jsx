@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 const Budget = () => {
-  const [selectedBudget, setSelectedBudget] = useState("");
+  const [selectedBudget, setSelectedBudget] = useState("flexible");
 
   const handleBudgetSelect = (value) => {
     setSelectedBudget(value);
@@ -17,44 +17,37 @@ const Budget = () => {
         How would you describe your budget?
       </h2>
       <div className="flex flex-col gap-y-2 justify-center">
-        <div className="flex gap-2">
-          <input
-            type="radio"
-            name="budget"
-            id="moderate"
-            className=""
-            checked={selectedBudget === "moderate"}
-            onChange={() => handleBudgetSelect("moderate")}
-          />
-          <label htmlFor="moderate" className="">
-            Moderate Budget
-          </label>
+        {/* Container for Flexible */}
+        <div className="bg-blue-50 rounded-md p-2">
+          <div className="flex gap-2">
+            <input
+              type="radio"
+              name="budget"
+              id="flexible"
+              className=""
+              checked={selectedBudget === "flexible"}
+              onChange={() => handleBudgetSelect("flexible")}
+            />
+            <label htmlFor="flexible" className="">
+              Flexible
+            </label>
+          </div>
         </div>
-        <div className="flex gap-2">
-          <input
-            type="radio"
-            name="budget"
-            id="flexible"
-            className=""
-            checked={selectedBudget === "flexible"}
-            onChange={() => handleBudgetSelect("flexible")}
-          />
-          <label htmlFor="flexible" className="">
-            Flexible Budget
-          </label>
-        </div>
-        <div className="flex gap-2">
-          <input
-            type="radio"
-            name="budget"
-            id="not-sure"
-            className=""
-            checked={selectedBudget === "not-sure"}
-            onChange={() => handleBudgetSelect("not-sure")}
-          />
-          <label htmlFor="not-sure" className="">
-            Not sure
-          </label>
+        {/* Container for Moderate */}
+        <div className="bg-blue-50 rounded-md p-2">
+          <div className="flex gap-2">
+            <input
+              type="radio"
+              name="budget"
+              id="moderate"
+              className=""
+              checked={selectedBudget === "moderate"}
+              onChange={() => handleBudgetSelect("moderate")}
+            />
+            <label htmlFor="moderate" className="">
+              Moderate
+            </label>
+          </div>
         </div>
       </div>
     </div>
