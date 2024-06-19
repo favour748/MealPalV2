@@ -2,11 +2,12 @@ import React, { useState, useEffect } from "react";
 
 const HealthIssuesForm = () => {
   const healthIssues = [
-    { name: "Diabetes" },
-    { name: "Ulcer" },
-    { name: "Heart Diseases" },
-    { name: "Asthma" },
-    { name: "Stroke" },
+    "Diabetes",
+    "Ulcer",
+    "Heart Diseases",
+    "Asthma",
+    "Stroke",
+    "None",
   ];
 
   const [selectedIssue, setSelectedIssue] = useState("");
@@ -20,25 +21,25 @@ const HealthIssuesForm = () => {
   }, [selectedIssue]);
 
   return (
-    <div className="min-h-screen w-screen px-4 flex flex-col justify-center lg:items-center">
-      <h2 className="mb-4 mt-10 text-2xl font-bold text-left lg:text-center">
+    <div className="min-h-screen w-screen px-4 flex flex-col justify-center items-center">
+      <h2 className="mb-4 mt-10 text-2xl font-bold text-left w-full lg:text-center">
         Any existing Health Condition?
       </h2>
-      <div className="flex flex-col gap-4 lg:gap-8 mb-10 w-full max-w-md lg:max-w-sm mx-auto">
+      <div className="flex flex-col gap-4 mb-10 w-full max-w-md mx-auto">
         {healthIssues.map((issue) => (
           <label
-            key={issue.name}
-            className={`flex items-center border border-gray-100 rounded-md lg:border-2 p-3 lg:p-5`}
-            style={{ backgroundColor: issue.name === selectedIssue ? "#BFDBFE" : "" }}
+            key={issue}
+            className={`flex items-center border border-gray-100 rounded-md p-3 lg:p-5 ${
+              issue === selectedIssue ? "bg-blue-200" : ""
+            }`}
           >
             <input
               type="radio"
-              onChange={() => handleIssueSelect(issue.name)}
-              checked={issue.name === selectedIssue}
-              id={`radio-${issue.name}`}
+              onChange={() => handleIssueSelect(issue)}
+              checked={issue === selectedIssue}
               className="custom-radio-btn mr-4"
             />
-            <span className="font-bold">{issue.name}</span>
+            <span className="font-bold">{issue}</span>
           </label>
         ))}
       </div>
