@@ -4,16 +4,21 @@ import { Link } from "react-router-dom";
 
 const GetStarted = ({ onNext }) => {
   return (
-
     <div className="min-h-screen w-screen flex flex-col">
-      <div
-        className="flex-[5]"
-        style={{
-          background: `url(${image})`,
-          backgroundSize: "cover",
-          backgroundPosition: `center`,
-        }}
-      ></div>
+      <div className="flex-[5] grid grid-cols-4 grid-rows-3 gap-2 p-2">
+        {Array.from({ length: 12 }).map((_, index) => (
+          <div
+            key={index}
+            className="bg-cover bg-center"
+            style={{
+              backgroundImage: `url(${image})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              borderRadius: "8px", // Add border radius here
+            }}
+          ></div>
+        ))}
+      </div>
       <div
         className="flex-[1] flex flex-col justify-center items-center bg-gray-900"
         style={{ backgroundColor: "charcoal" }}

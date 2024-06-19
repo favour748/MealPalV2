@@ -12,7 +12,6 @@ const DietSelection = () => {
   ];
 
   const handleOptionSelect = (option) => {
-    // Toggle the option in and out of selectedOptions
     if (selectedOptions.includes(option)) {
       setSelectedOptions(selectedOptions.filter(item => item !== option));
     } else {
@@ -25,7 +24,7 @@ const DietSelection = () => {
       <h2 className="mb-4 mt-10 text-2xl font-bold text-left lg:text-center">
         What are your dietary preferences?
       </h2>
-      <div className="flex flex-col gap-4 lg:gap-8 mb-10">
+      <div className="flex flex-col gap-4 mb-10 w-full max-w-md">
         {dietOptions.map((option) => (
           <div
             key={option.name}

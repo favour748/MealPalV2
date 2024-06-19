@@ -22,7 +22,7 @@ const HealthIssuesForm = () => {
 
   return (
     <div className="min-h-screen w-screen px-4 flex flex-col justify-center items-center">
-      <h2 className="mb-4 mt-10 text-2xl font-bold text-center">
+      <h2 className="mb-4 mt-10 text-2xl font-bold text-left w-full lg:text-center">
         Any existing Health Condition?
       </h2>
       <div className="flex flex-col gap-4 mb-10 w-full max-w-md mx-auto">
