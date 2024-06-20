@@ -9,6 +9,10 @@ const AllergySelection = ({ onAllergySelected }) => {
     { name: "Nuts", description: "Cashew, Almonds, Hazelnuts, Walnuts" },
     { name: "Lactose", description: "Milk, Butter, Cheese, Ice-cream, Yogurt" },
     { name: "Gluten", description: "Foods such as wheat, barley, oats" },
+    { name: "Soy", description: "Soy milk, Soy protein, Soybeans" },
+    { name: "Seasame", description: "Bread , Hamburger, Granola" },
+    { name: "Sulfite", description: "Apple cider, Alcoholic/non-alcoholic beer, Hot dogs" },
+     { name: "Mustard", description: "Pasta, Mashed potatoes, Mussels" },
     { name: "None" },
   ];
 
