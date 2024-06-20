@@ -51,15 +51,15 @@ const Profile = ({ user }) => {
         if (docSnap.exists()) {
           const userData = docSnap.data();
           setEmail(currentUser.email || "");
-          setName(userData.name || "...");
-          setBio(userData.bio || "Bio goes here...");
+          setName(userData.name || "");
+          setBio(userData.bio || "");
           setProfileImage(userData.profileImage || "");
         } else {
           // Create the user profile document if it doesn't exist
           await setDoc(docRef, {
-            name: currentUser.displayName || "...",
+            name: currentUser.displayName || "",
             email: currentUser.email || "",
-            bio: "Bio goes here...",
+            bio: "",
             profileImage: "",
           });
         }
@@ -181,6 +181,7 @@ const Profile = ({ user }) => {
               <input
                 type="text"
                 value={name}
+                placeholder="Enter your name"
                 onChange={handleNameChange}
                 className="text-lg mb-2 font-bold"
               />
@@ -189,7 +190,7 @@ const Profile = ({ user }) => {
                 className="text-lg mb-2 font-bold"
                 onClick={() => toggleEditMode("name")}
               >
-                {name}
+                {name || "Enter your name"}
               </p>
             )}
           </div>
@@ -209,13 +210,16 @@ const Profile = ({ user }) => {
             {isEditingBio ? (
               <textarea
                 value={bio}
+                placeholder="Tell us about yourself"
                 onChange={handleBioChange}
                 rows={4}
                 cols={50}
                 className="w-full h-24 p-2 border rounded-lg"
               />
             ) : (
-              <p onClick={() => toggleEditMode("bio")}>{bio}</p>
+              <p onClick={() => toggleEditMode("bio")}>
+                {bio || "Tell us about yourself"}
+              </p>
             )}
           </div>
 
