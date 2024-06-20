@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 const GetStarted = ({ onNext }) => {
   return (
     <div className="min-h-screen w-screen flex flex-col">
-      <div className="flex-[5] grid grid-cols-4 grid-rows-3 gap-2 p-2">
+      <div className="flex-[5] grid grid-cols-3 grid-rows-4 gap-2 p-2">
         {Array.from({ length: 12 }).map((_, index) => (
           <div
             key={index}
@@ -14,7 +14,8 @@ const GetStarted = ({ onNext }) => {
               backgroundImage: `url(${image})`,
               backgroundSize: "cover",
               backgroundPosition: "center",
-              borderRadius: "8px", // Add border radius here
+              borderRadius: "8px",
+              transform: "skew(-20deg)", 
             }}
           ></div>
         ))}
