@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const AllergySelection = () => {
+const AllergySelection = ({ onAllergySelected }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const allergyOptions = [
@@ -12,13 +12,17 @@ const AllergySelection = () => {
     { name: "None" },
   ];
 
-  const handleOptionSelect = (option) => {
-    setSelectedOptions((prev) =>
-      prev.includes(option)
-        ? prev.filter((item) => item !== option)
-        : [...prev, option]
-    );
+  const handleOptionSelect = (optionName) => {
+    const newSelectedOptions = selectedOptions.includes(optionName)
+      ? selectedOptions.filter((item) => item !== optionName)
+      : [...selectedOptions, optionName];
+    
+    setSelectedOptions(newSelectedOptions);
+    onAllergySelected(newSelectedOptions.length > 0); 
   };
+
+  useEffect(() => {
+  }, [selectedOptions]);
 
   return (
     <div className="min-h-screen w-screen px-4 flex flex-col justify-center items-center">
