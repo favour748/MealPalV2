@@ -1,6 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const DietSelection = () => {
+const DietSelection = ({ onDietSelected }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const dietOptions = [
@@ -11,13 +11,17 @@ const DietSelection = () => {
     { name: "Omnivore", description: "Eats meat and almost everything" },
   ];
 
-  const handleOptionSelect = (option) => {
-    if (selectedOptions.includes(option)) {
-      setSelectedOptions(selectedOptions.filter(item => item !== option));
-    } else {
-      setSelectedOptions([...selectedOptions, option]);
-    }
+  const handleOptionSelect = (optionName) => {
+    const newSelectedOptions = selectedOptions.includes(optionName)
+      ? selectedOptions.filter(item => item !== optionName)
+      : [...selectedOptions, optionName];
+    
+    setSelectedOptions(newSelectedOptions);
+    onDietSelected(newSelectedOptions.length > 0); 
   };
+
+  useEffect(() => {
+  }, [selectedOptions]);
 
   return (
     <div className="min-h-screen w-screen px-4 flex flex-col justify-center lg:items-center">
