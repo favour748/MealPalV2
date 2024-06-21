@@ -1,13 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Frameone from "../assets/Frameone.png";
 import reset from "../assets/reset.png";
 import servingIcon from "../assets/servingIcon.png";
 import bookmark from "../assets/bookmark.png";
+import back from "../assets/back.png";
+
 
 const Ingredients = () => {
+    const navigate = useNavigate();
+
 return(
-<div className="p-6">
+<div className="flex flex-col justify-center items-center mb-10 mt-6">
+<img
+        src={back}
+        alt="Back"
+        style={{ cursor: 'pointer', position: 'absolute', top: 70, left: 10, width: 20, height: 20 }}
+        onClick={() => navigate(-1)}
+      />
+
     <div className="flex flex-col gap-3 w-[358px] h-[159px]">
     <h1 className="font-manrope text-lg font-semibold leading-normal">
           Cabbage Stir Fry
@@ -42,7 +53,7 @@ return(
           </p>
         </div>
       </div>
-      <div className="flex w-[390px] items-center mt-6 h-[62px] border-b-2 border-b-gray-100 gap-6">
+      <div className="flex w-[390px] items-center mt-6 h-[62px] border-b-2 p-4 border-b-gray-100 gap-6">
         <div className="flex p-1 md:p-2 justify-center items-center w-[71px] h-[26px] gap-2 rounded-xl 
               bg-[#F4F4F4]">
           <p className=" text-center font-manrope text-xs font-semibold leading-[1.5]">
@@ -51,11 +62,11 @@ return(
         </div>
         <div className="flex p-1 md:p-2 justify-center items-center w-[110px] h-[26px] gap-2 rounded-xl 
              bg-[#F0F6FF] border border-[#4268FB]">
-                <Link to={`/MealNutrients`}>
+                
                 <p className="text-center text-[#4268FB] font-manrope text-xs font-semibold leading-[1.5]">
             Ingredients
           </p>
-                </Link>
+              
         </div>
         <div className="flex p-1 md:p-2 justify-center items-center w-[130px] h-[26px] gap-2 rounded-xl 
              bg-[#F4F4F4]">
@@ -83,7 +94,7 @@ return(
                     </ol>
             </div>
       </div>
-      <Link to={`/MealNutrients`}>
+      <Link to={`/SavedMeal`}>
         <button
           className="font-manrope text-md font-medium mt-10 leading-normal
           flex w-[358px] h-[40px] p-4

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import Notification from "./Notification";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import back from '../assets/back.png';
 
 const CreateMealPlan = () => {
   const [successMessage, setSuccessMessage] = useState("");
@@ -9,6 +10,7 @@ const CreateMealPlan = () => {
   const [allergies, setAllergies] = useState([]);
   const [dislikes, setDislikes] = useState([]);
   const [isEditing, setIsEditing] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -16,7 +18,7 @@ const CreateMealPlan = () => {
         const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
         const data = await response.json();
         
-        // Mocking the user data
+        
         const userData = {
           dietType: "Vegetarian",
           budget: "Flexible",
@@ -54,9 +56,16 @@ const CreateMealPlan = () => {
       prev.includes(value) ? prev.filter((d) => d !== value) : [...prev, value]
     );
   };
-
+  
   return (
     <div className="flex flex-col justify-center items-center mb-10 mt-6">
+      <img
+        src={back}
+        alt="Back icon"
+        style={{ cursor: 'pointer', position: 'absolute', top: 70, left: 10, width: 20, height: 20 }}
+        onClick={() => navigate(-1)}
+      />
+      
       <div className="inline-flex w-[358px] h-[80px] flex-col items-start">
         <h1 className="font-manrope text-lg font-semibold leading-normal">
           Create meal plan
