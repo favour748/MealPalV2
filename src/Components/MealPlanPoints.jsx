@@ -11,7 +11,7 @@ function MealPlanPoints() {
     function createMealPlan() {
 
         // to navigate to the meal plan page
-        navigate('/mealplan');
+        navigate('/CreateMealPlan');
     }
 
     
