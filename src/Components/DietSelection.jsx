@@ -4,11 +4,17 @@ const DietSelection = ({ onDietSelected }) => {
   const [selectedOptions, setSelectedOptions] = useState([]);
 
   const dietOptions = [
+    { name: "Recommended", description: "" },
+    { name: "Popular", description: "" },
     { name: "Vegan", description: "Only eat plant-based food" },
     { name: "Vegetarian", description: "Don’t eat meat and fish" },
     { name: "Flexitarian", description: "Occasionally eats meat and fish" },
     { name: "Pescetarian", description: "Don’t eat meat but eats fish" },
     { name: "Omnivore", description: "Eats meat and almost everything" },
+    { name: "Lactose-free", description: "Don't eat Cheese, Cream and Milk" },
+    { name: "Classic", description: "Tomato soup, Beaf stew, Chicken noodles soup" },
+    { name: "Keto", description: "Eat Vegetables, Avocados, Seafood" },
+    { name: "LowCarbs", description: "Eat Whole eggs, Nuts, Strawberries" },
   ];
 
   const handleOptionSelect = (optionName) => {
