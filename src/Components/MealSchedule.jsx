@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import chevron from "../assets/chevron.png"
+import { Link } from 'react-router-dom';
 
 const initialMealPlan = {
     Week1: {
@@ -65,6 +66,17 @@ const initialMealPlan = {
               })}
             </div>
           ))}
+        </div>
+        <div>
+        <Link to={`/MealNutrients`}>
+          <button
+            className="font-manrope text-md font-medium leading-normal
+          flex w-[358px] h-[40px] p-4
+         justify-center items-center gap-2 flex-shrink-0 rounded-[8px] border bg-[#4268FB]"
+          >
+            Proceed
+          </button>
+        </Link>
         </div>
       </div>
     );

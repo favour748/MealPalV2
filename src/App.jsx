@@ -20,6 +20,8 @@ import Notification from "./pages/NotificationPage";
 import HealthIssuesForm from "./Components/Healthissues";
 import SelectPreferencePage from "./pages/SelectPreferencePage";
 import MealSchedulePage from "./pages/MealSchedulePage";
+import MealNutrientsPage from "./pages/MealNutrientsPage";
+import IngredientsPage from "./pages/IngredientsPage";
 
 function App() {
   const { userLoggedIn } = useAuth();
@@ -153,7 +155,23 @@ function App() {
               <PrivateRoute>
                 <MealSchedulePage />
               </PrivateRoute>
-            }
+            }         
+          />
+           <Route
+            path="/MealNutrients"
+            element={
+              <PrivateRoute>
+                <MealNutrientsPage />
+              </PrivateRoute>
+            }          
+          />
+           <Route
+            path="/Ingredients"
+            element={
+              <PrivateRoute>
+                <IngredientsPage />
+              </PrivateRoute>
+            }          
           />
         </Routes>
       </>
