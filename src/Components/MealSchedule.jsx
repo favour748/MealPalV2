@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import chevron from "../assets/chevron.png"
 import { Link } from 'react-router-dom';
+import bookmark from "../assets/bookmark.png";
+
 
 const initialMealPlan = {
     Week1: {
@@ -69,13 +71,14 @@ const initialMealPlan = {
         </div>
         <div>
         <Link to={`/MealNutrients`}>
-          <button
-            className="font-manrope text-md font-medium leading-normal
+        <button
+          className="font-manrope text-md font-medium mt-10 leading-normal
           flex w-[358px] h-[40px] p-4
-         justify-center items-center gap-2 flex-shrink-0 rounded-[8px] border bg-[#4268FB]"
-          >
-            Proceed
-          </button>
+         justify-center items-center gap-2 flex-shrink-0 rounded-[8px] border text-white bg-[#4268FB]"
+        >
+           <img src={bookmark} alt="bookmark icon" />
+           Added to bookmark
+        </button>
         </Link>
         </div>
       </div>
