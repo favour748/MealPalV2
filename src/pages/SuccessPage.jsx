@@ -7,6 +7,7 @@ const SuccessPage = () => {
         <div className="bg-white p-8 rounded shadow-md w-full max-w-md text-center">
           <h1 className="text-2xl mb-6 text-green-600">Success</h1>
           <p className="mb-4">Your form has been sent successfully!</p>
+          <p className="mb-6">Thank you for checking!</p>
           <Link
             to="/"
             className="py-2 px-4 bg-blue-600 text-white rounded-md shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"

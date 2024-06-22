@@ -21,7 +21,7 @@ import Notification from "./pages/NotificationPage";
 // import Savedmeal from "./pages/Savedmeal";
 import ContactUsPage from "./pages/ContactUsPage";
 import SuccessPage from "./pages/SuccessPage";
-import BoookmarkPage from "./pages/BookmarkPage";
+import BookmarkPage from "./pages/BookmarkPage";
 import FAQPage from "./pages/FAQPage";
 
 function App() {
@@ -151,7 +151,7 @@ function App() {
             path="/bookmark"
             element={
               <PrivateRoute>
-                <BoookmarkPage />
+                <BookmarkPage />
               </PrivateRoute>
             }
           />
