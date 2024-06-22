@@ -19,6 +19,10 @@ import CommunityPage from "./pages/CommunityPage";
 import Navbar from "./Components/Navbar";
 import Notification from "./pages/NotificationPage";
 // import Savedmeal from "./pages/Savedmeal";
+import ContactUsPage from "./pages/ContactUsPage";
+import SuccessPage from "./pages/SuccessPage";
+import BoookmarkPage from "./pages/BookmarkPage";
+import FAQPage from "./pages/FAQPage";
 
 function App() {
   const { userLoggedIn } = useAuth();
@@ -66,6 +70,7 @@ function App() {
               </PrivateRoute>
             }
           />
+
           <Route
             path="/preview/:id"
             element={
@@ -82,16 +87,6 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route
-            path="/referral"
-            element={
-              <PrivateRoute>
-                <ReferralPage />
-                </PrivateRoute>
-                
-            }
-          />
-
           <Route
             path="/referral"
             element={
@@ -130,6 +125,41 @@ function App() {
             element={
               <PrivateRoute>
                 <RecommendedMeal />
+              </PrivateRoute>
+            }
+          />
+      
+            <Route
+            path="/contactUs"
+            element={
+              <PrivateRoute>
+                <ContactUsPage />
+              </PrivateRoute>
+            }
+          />
+          
+          <Route
+            path="/success"
+            element={
+              <PrivateRoute>
+                <SuccessPage />
+              </PrivateRoute>
+            }
+          />
+
+           <Route
+            path="/bookmark"
+            element={
+              <PrivateRoute>
+                <BoookmarkPage />
+              </PrivateRoute>
+            }
+          />
+           <Route
+            path="/faq"
+            element={
+              <PrivateRoute>
+                <FAQPage />
               </PrivateRoute>
             }
           />

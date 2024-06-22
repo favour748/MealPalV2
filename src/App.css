@@ -1,4 +1,4 @@
-/* #root {
+ /* #root { 
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -40,3 +40,57 @@
 .read-the-docs {
   color: #888;
 } */
+
+/* src/components/ContactUs.css */
+/* form {
+  display: inline-block;
+  text-align: left;
+  max-width: 600px;
+  margin: 20 auto;
+  padding: 20;
+  border: 1px solid #ccc;
+  border-radius: 1px;
+  background: white;
+}
+
+form div {
+  margin-bottom: 15px;
+} */
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  height: 50px;
+}
+
+textarea {
+  height: 100px;
+}
+
+input, textarea, select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  padding: 50px 20px;
+  background-color: #007BFF;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+  display: block;
+  margin: 20px 0;
+}
+
+button:hover {
+  background-color: #0056b3;
+  width: 100%;
+  /* text-transform: center; */
+}
