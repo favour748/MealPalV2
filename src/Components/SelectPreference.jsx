@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import back from '../assets/back.png';
 
 const options = {
   Tubers: ["Yam", "Cocoyam", "White yam", "Potatoes", "Cassava", "Ginger", "Arums", "Sweet potato"],
@@ -11,6 +12,7 @@ const options = {
 
 const SelectPreference = () => {
   const [selectedItems, setSelectedItems] = useState([]);
+  const navigate = useNavigate();
 
   const handleSelect = (category, item) => {
     const newItem = { category, item };
@@ -26,7 +28,13 @@ const SelectPreference = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center items-center mb-10 mt-6">
+    <div className="flex flex-col justify-center items-center mb-10 mt-6 p-6">
+      <img
+        src={back}
+        alt="Back icon"
+        style={{ cursor: 'pointer', position: 'absolute', top: 70, left: 10, width: 20, height: 20 }}
+        onClick={() => navigate(-1)}
+      />
       <div className="inline-flex w-[358px] h-[80px] flex-col items-start">
         <h1 className="font-manrope text-lg font-semibold leading-normal">Select preference</h1>
         <p className="font-manrope text-sm text-[#545454] mt-2 font-normal leading-normal">

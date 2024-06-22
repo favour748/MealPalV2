@@ -10,6 +10,7 @@ Cohort 8 Pro Capstone Project
   - [Team Alpha](#team-alpha)
   - [Team Beta](#team-beta)
   - [Team Eta](#team-eta)
+  - [Team One](#team-one)
 - [Tools](#tools)
 - [Resources](#resources)
 - [Hosted Project](#hosted-project)
@@ -95,6 +96,12 @@ If you already have an account, log in using these steps:
 - Chioma Marycynthia []()
 
 
+### Team One
+
+- Achi Faith [IfyFaith24](https://github.com/ifyfaith24)
+- Chinechelum Eucharia [Eucharian8](https://github.com/Eucharian8)
+
+
   # Overview
 
   The app is designed to incentivize user engagement through gamification features such as referral links, point awards, and meal plan points.
@@ -104,6 +111,8 @@ If you already have an account, log in using these steps:
   - Referral Link Generation and Point Awards: [janeAnezi] implemented the referral link generation feature and the logic for awarding points to users based on successful referrals.
 
   - Meal Plan Points: [sarahlutaaya256] developed the functionality related to meal plan points, including tracking user activities and assigning points accordingly.
+
+  - Create Meal Plan: [ifyfaith24] focused on creating pages dedicated to crafting personalized meal plans
 
   # Features
 
@@ -117,11 +126,13 @@ If you already have an account, log in using these steps:
   - Meal Plan Points
     Users earn points for following the meal plan provided by the app.
     Points are awarded based on adherence to the plan, healthy eating choices, and consistency.
+  - Create Meal Plan
+    Enhance the ability for users to create customized meal plans based on dietary preferences, health goals, and calorie requirements. 
 
   # Installation
 
   - Clone the repository:
-    git clone https://github.com/princessmaggy/c8Project
+    git clone https://github.com/PrincessMaggy/MealPalV2
   - Install dependencies:
     npm install
   - Build and run the application:
@@ -147,5 +158,5 @@ If you already have an account, log in using these steps:
 
 ## Hosted Project
 
-Explore the live version of the MealPal Web App here [MealPal](https://c8-project.vercel.app/).
+Explore the live version of the MealPal Web App here [MealPal](https://meal-pal-v2-delta.vercel.app/).
 Thank you for choosing MealPal
