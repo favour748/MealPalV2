@@ -94,3 +94,44 @@ button:hover {
   width: 100%;
   /* text-transform: center; */
 }
+.custom-checkbox {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #4268FB;
+}
+
+.placeholder-bottom-right::placeholder {
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+  color: gray; 
+}
+
+.custom-radio input[type="radio"] {
+  display: none;
+}
+
+.custom-radio .radio-indicator {
+  height: 20px;
+  width: 20px;
+  background-color: #777777; 
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+}
+
+.custom-radio .radio-indicator::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white; 
+  transform: translate(-50%, -50%);
+}
+
+.custom-radio input[type="radio"]:checked + .radio-indicator {
+  background-color: #4268FB; 
+}
