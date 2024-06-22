@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -9,7 +10,7 @@ function MealPlanPoints() {
     function createMealPlan() {
 
         // to navigate to the meal plan page
-        navigate('/mealplan');
+        navigate('/CreateMealPlan');
     }
 
     

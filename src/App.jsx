@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { useAuth } from "./Contexts/AuthContext";
 import PrivateRoute from "./Contexts/PrivateRoute";
-import MealPlanPage from "./pages/MealPlanPage";
+import CreateMealPlanPage from "./pages/CreateMealPlanPage";
 import MealPointsPage from "./pages/MealPointsPage";
 import MealHistoryPage from "./pages/MealHistoryPage";
 import "./App.css";
@@ -18,6 +18,10 @@ import CommunityPage from "./pages/CommunityPage";
 import Navbar from "./Components/Navbar";
 import Notification from "./pages/NotificationPage";
 import HealthIssuesForm from "./Components/Healthissues";
+import SelectPreferencePage from "./pages/SelectPreferencePage";
+import MealSchedulePage from "./pages/MealSchedulePage";
+import MealNutrientsPage from "./pages/MealNutrientsPage";
+import IngredientsPage from "./pages/IngredientsPage";
 
 function App() {
   const { userLoggedIn } = useAuth();
@@ -46,11 +50,12 @@ function App() {
               </PrivateRoute>
             }
           />
+          
           <Route
-            path="/mealplan"
+            path="/CreateMealPlan"
             element={
               <PrivateRoute>
-                <MealPlanPage />
+                <CreateMealPlanPage />
               </PrivateRoute>
             }
           />
@@ -135,6 +140,38 @@ function App() {
                 <HealthIssuesForm />
               </PrivateRoute>
             }
+          />
+           <Route
+            path="/SelectPreference"
+            element={
+              <PrivateRoute>
+                <SelectPreferencePage />
+              </PrivateRoute>
+            }
+          />
+           <Route
+            path="/MealSchedule"
+            element={
+              <PrivateRoute>
+                <MealSchedulePage />
+              </PrivateRoute>
+            }         
+          />
+           <Route
+            path="/MealNutrients"
+            element={
+              <PrivateRoute>
+                <MealNutrientsPage />
+              </PrivateRoute>
+            }          
+          />
+           <Route
+            path="/Ingredients"
+            element={
+              <PrivateRoute>
+                <IngredientsPage />
+              </PrivateRoute>
+            }          
           />
         </Routes>
       </>
