@@ -112,7 +112,7 @@ If you already have an account, log in using these steps:
 
   - Meal Plan Points: [sarahlutaaya256] developed the functionality related to meal plan points, including tracking user activities and assigning points accordingly.
 
-  - Create Meal Plan: [ifyfaith24] focused on creating pages dedicated to crafting personalized meal plans
+  - Referral Link, Copy Link and Share Button: [Eucharian8] made the referral link redirect the new user to the signup page. Improved the UI of the referral link copy button and added a share button.
 
   # Features
 
@@ -146,7 +146,8 @@ If you already have an account, log in using these steps:
 - JavaScript: Programming language used for frontend logic.
 - HTML/CSS: Markup and styling languages for structuring and styling the UI.
 - Local Storage: Used to store and retrieve points for each user.
-- API: A food api may analyze recipe costs and nutritional values,classify foods into allergens,compute meal plans, etc. Spoonacular food and recipe api is the only API you will ever need. Its effficient and reliable,
+- API: A food api may analyze recipe costs and nutritional values,classify foods into allergens,compute meal plans, etc. Spoonacular food and recipe api is the only API you will ever need. Its effficient and reliable.
+- API: A form api that captures all feedback sent in the feedback section of the app. Each user gets a reply after their feedback has been received.
 
 ## Languages, Framework and Tools
 
@@ -155,6 +156,7 @@ If you already have an account, log in using these steps:
 - Tailwind CSS
 - Github
 - API (https://spoonacular.com/food-api)
+- API (https://www.emailjs.com/docs/)
 
 ## Hosted Project
 
