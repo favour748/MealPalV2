@@ -6,11 +6,13 @@ import MealPointsPage from "./pages/MealPointsPage";
 import MealHistoryPage from "./pages/MealHistoryPage";
 import "./App.css";
 import ReferralPage from "./pages/ReferralPage";
+import Makepost from "./pages/makepost";
 import Onboarding from "./pages/Onboarding";
 import Preview from "./pages/Previewmeal";
 import Mealdetails from "./pages/MealFullDetails";
 import SignUp from "./pages/SignUp";
 import RecommendedMeal from "./pages/RecommendedMeal";
+import SelectCategory from "./Components/selectCategory";
 import SignIn from "./pages/SignIn";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
@@ -24,6 +26,7 @@ import MealNutrientsPage from "./pages/MealNutrientsPage";
 import IngredientsPage from "./pages/IngredientsPage";
 import FeedbackFormPage from "./pages/FeedbackFormPage";
 import ThankYouPage from "./pages/ThankYouPage";
+import Report from "./pages/report";
 
 function App() {
   const { userLoggedIn } = useAuth();
@@ -106,6 +109,30 @@ function App() {
             element={
               <PrivateRoute>
                 <ProfilePage />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/makepost"
+            element={
+              <PrivateRoute>
+                <Makepost />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/selectcategory"
+            element={
+              <PrivateRoute>
+                <SelectCategory />
+              </PrivateRoute>
+            }
+          />
+           <Route
+            path="/report"
+            element={
+              <PrivateRoute>
+                <Report />
               </PrivateRoute>
             }
           />
