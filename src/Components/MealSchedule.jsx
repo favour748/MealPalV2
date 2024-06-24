@@ -86,8 +86,7 @@ const MealSchedule = () => {
             flex w-[358px] h-[40px] p-4
            justify-center items-center gap-2 flex-shrink-0 rounded-[8px] border text-white bg-[#4268FB]"
           >
-            <img src={bookmark} alt="bookmark icon" />
-            Added to bookmark
+           Proceed
           </button>
         </Link>
       </div>
