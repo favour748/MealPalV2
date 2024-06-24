@@ -9,6 +9,9 @@ import back from "../assets/back.png";
 
 const Ingredients = () => {
     const navigate = useNavigate();
+    const handleNutrientsClick = () => {
+      navigate('/MealNutrients');
+    };
 
 return(
 <div className="flex flex-col justify-center items-center mb-10 mt-6">
@@ -55,7 +58,8 @@ return(
       </div>
       <div className="flex w-[390px] items-center mt-6 h-[62px] border-b-2 p-4 border-b-gray-100 gap-6">
         <div className="flex p-1 md:p-2 justify-center items-center w-[71px] h-[26px] gap-2 rounded-xl 
-              bg-[#F4F4F4]">
+              bg-[#F4F4F4] cursor-pointer"
+              onClick={handleNutrientsClick}>
           <p className=" text-center font-manrope text-xs font-semibold leading-[1.5]">
             Nutrients
           </p>

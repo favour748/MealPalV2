@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import Frameone from "../assets/Frameone.png";
 import reset from "../assets/reset.png";
@@ -8,6 +8,9 @@ import back from "../assets/back.png";
 
 const MealNutrients = () => {
   const navigate = useNavigate();
+  const handleIngredientsClick = () => {
+    navigate('/Ingredients');
+  };
 
   return (
     <div className="flex flex-col p-6 justify-center items-center">
@@ -59,12 +62,13 @@ const MealNutrients = () => {
           </p>
         </div>
         <div className="flex p-1 md:p-2 justify-center items-center w-[110px] h-[26px] gap-2 rounded-xl 
-             bg-[#F4F4F4]">
-          <Link to={`/Ingredients`}>
+             bg-[#F4F4F4] cursor-pointer"
+             onClick={handleIngredientsClick}>
+          
             <p className="text-center font-manrope text-xs font-semibold leading-[1.5]">
               Ingredients
             </p>
-          </Link>
+         
         </div>
         <div className="flex p-1 md:p-2 justify-center items-center w-[130px] h-[26px] gap-2 rounded-xl 
              bg-[#F4F4F4]">
@@ -117,7 +121,7 @@ const MealNutrients = () => {
         </div>
       </div>
 
-      <Link to={`/SavedMeal`}>
+      <Link to={`/Savedmeal`}>
         <button
           className="font-manrope text-md font-medium mt-10 leading-normal
           flex w-[358px] h-[40px] p-4
