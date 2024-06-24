@@ -22,6 +22,8 @@ import SelectPreferencePage from "./pages/SelectPreferencePage";
 import MealSchedulePage from "./pages/MealSchedulePage";
 import MealNutrientsPage from "./pages/MealNutrientsPage";
 import IngredientsPage from "./pages/IngredientsPage";
+import FeedbackFormPage from "./pages/FeedbackFormPage";
+import ThankYouPage from "./pages/ThankYouPage";
 
 function App() {
   const { userLoggedIn } = useAuth();
@@ -170,6 +172,22 @@ function App() {
             element={
               <PrivateRoute>
                 <IngredientsPage />
+              </PrivateRoute>
+            }          
+          />
+           <Route
+            path="/FeedbackForm"
+            element={
+              <PrivateRoute>
+                <FeedbackFormPage />
+              </PrivateRoute>
+            }          
+          />
+           <Route
+            path="/ThankYou"
+            element={
+              <PrivateRoute>
+                <ThankYouPage />
               </PrivateRoute>
             }          
           />
