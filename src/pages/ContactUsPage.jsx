@@ -25,6 +25,22 @@ const ContactUs = () => {
      generatePDF();
      navigate("/success");
  };
+//  const OnSubmit = async (e) => {
+//     e.preventDefault(); 
+//     try {
+//         //Simulate form submission logic, e.g., sending email or saving data
+//         // For demonstration purposes, we will just use a delay
+//                 await new Promise((resolve, reject) => setTimeout(resolve, 1000));
+
+//                 // On success, navigate to the success page
+//                 navigate("/success", {state: { message: "Your form has been sent successfully!" }});
+//                 }catch (error) {
+//                     // On error, navigate to the success page with an error message
+//                             navigate("/success",
+//                         {state: {message: "There was an error logging you out." } });
+//                  }
+//                 };
+                
  const generatePDF = () => {
      const input = document.getElementById("contact-us-form");
 
@@ -62,7 +78,7 @@ return (
          value="others">Others</option>
                     </select>
             </div>
-            <div className="mb-4">
+            <div>
             <label htmlFor="email"className="block text-sm font-medium text-gray-700
             ">Email Address</label>
         <input type="email" id="email" name="email"
@@ -70,7 +86,7 @@ return (
         OnChange= {handleChange} placeholder="Enter email address" required classNmae="mt-1 block w-full px-3 py-2 border border-gray-300
         rounded-md shadow-sm focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
         </div>
-        <div className="mb-4">
+        <div>
             <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">Full Name
             </label>
             <input type="text" id="fullName" name="fullName"
@@ -79,11 +95,11 @@ return (
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm
             focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm" />
         </div>
-        <div className="mb-4">
+        <div>
             <label htmlFor="note" className="block text-sm font-medium text-gray-700">Note
             </label>
             <textarea id="note" name="note"
-            value={formData.fullName} 
+            value={formData.note} 
             onChange={handleChange} placeholder="Enter your feedback here" required 
             className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm
             focus:outline-none focus:ring-blue-500 focus-border-blue-500 sm:text-sm" ></textarea>
