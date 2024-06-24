@@ -94,7 +94,7 @@ return(
                     </ol>
             </div>
       </div>
-      <Link to={`/SavedMeal`}>
+      <Link to={`/FeedbackForm`}>
         <button
           className="font-manrope text-md font-medium mt-10 leading-normal
           flex w-[358px] h-[40px] p-4
