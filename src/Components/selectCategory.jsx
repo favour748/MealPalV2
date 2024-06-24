@@ -5,7 +5,8 @@ const SelectCategory = () => {
     const category2 = ["African Cuisine", "Italian Cuisine", "Chinese Cuisine", "Indian Cuisine", "Mexican Cuisine", "Japanese"]
   return (
     <>
-    <div className='border-b-[#EAEAEA] border py-3'>
+    <h1 className='text-center text-xl my-3 font-medium'>Select Category</h1>
+    <div className='border-b-[#EAEAEA] border-b py-3'>
       {category1.map(item => (
         <div className='flex items-center gap-3 p-3' key={item}>
             <input  type='checkbox'/>
