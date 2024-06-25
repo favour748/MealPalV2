@@ -1,4 +1,4 @@
- /* #root { 
+ /* /* #root { 
   max-width: 1280px;
   margin: 0 auto;
   padding: 2rem;
@@ -40,22 +40,17 @@
 .read-the-docs {
   color: #888;
 } */
+ 
+.custom-radio-btn {
+  width: 20px; 
+  height: 20px; 
+} */
 
 /* src/components/ContactUs.css */
-/* form {
-  display: inline-block;
-  text-align: left;
-  max-width: 600px;
-  margin: 20 auto;
-  padding: 20;
-  border: 1px solid #ccc;
-  border-radius: 1px;
-  background: white;
-}
 
 form div {
   margin-bottom: 15px;
-} */
+}
 
 label {
   display: block;
@@ -106,7 +101,9 @@ button:hover {
   right: 10px;
   color: gray; 
 }
-
+.search-community::placeholder{
+  color: #70707066;
+}
 .custom-radio input[type="radio"] {
   display: none;
 }
@@ -135,3 +132,27 @@ button:hover {
 .custom-radio input[type="radio"]:checked + .radio-indicator {
   background-color: #4268FB; 
 }
+
+/* community report page  */
+
+.custom-checkbox1 {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 0.7rem;
+  height: 0.7rem;
+  border: 1px solid #101010;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+  transition: background-color 0.2s, border-color 0.2s;
+  position: relative;
+}
+
+/* Custom checkbox style for checked state */
+.custom-checkbox1:checked {
+  background-color: #4248fb; /* Example color */
+  border-color: #101010; /* Example color */
+}
+
+
+

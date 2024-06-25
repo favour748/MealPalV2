@@ -1,49 +1,48 @@
 import React, { useState, useEffect } from "react";
 
-const HealthIssuesForm = () => {
+const HealthIssuesForm = ({ onHealthIssueSelected }) => {
   const healthIssues = [
     "Diabetes",
-    "High blood pressure",
-    "Digestive issues",
-    "Others",
+    "Ulcer",
+    "Heart Diseases",
+    "Asthma",
+    "Stroke",
     "None",
   ];
 
-  const [selectedIssues, setSelectedIssues] = useState([]);
+  const [selectedIssue, setSelectedIssue] = useState("");
 
-  const handleIssueClick = (issue) => {
-    if (selectedIssues.includes(issue)) {
-      setSelectedIssues(selectedIssues.filter((item) => item !== issue));
-    } else {
-      setSelectedIssues([...selectedIssues, issue]);
-    }
+  const handleIssueSelect = (issueName) => {
+    const newSelectedIssue = issueName === selectedIssue ? "" : issueName;
+    setSelectedIssue(newSelectedIssue);
+    onHealthIssueSelected(newSelectedIssue !== ""); 
   };
 
   useEffect(() => {
-    // Update local storage when selected health issues change
-    localStorage.setItem(
-      "selectedHealthIssues",
-      JSON.stringify(selectedIssues)
-    );
-  }, [selectedIssues]);
+    localStorage.setItem("selectedHealthIssue", JSON.stringify(selectedIssue));
+  }, [selectedIssue]);
 
   return (
-    <div className="mt-10 flex flex-col justify-center lg:items-center">
-      <h2 className="font-bold text-2xl text-black mb-5">Any health issues?</h2>
-      <div className="flex flex-wrap gap-2 mb-12">
+    <div className="min-h-screen w-screen px-4 flex flex-col justify-center items-center">
+      <h2 className="mb-4 mt-10 text-2xl font-bold text-left w-full lg:text-center">
+        Any existing Health Condition?
+      </h2>
+      <div className="flex flex-col gap-4 mb-10 w-full max-w-md mx-auto">
         {healthIssues.map((issue) => (
-          <button
+          <label
             key={issue}
-            onClick={() => handleIssueClick(issue)}
-            className={`border border-gray-300 hover:bg-blue-200 py-3 px-4 rounded-md`}
-            style={{
-              backgroundColor: selectedIssues.includes(issue)
-                ? "rgb(191 219 254)"
-                : "",
-            }}
+            className={`flex items-center border border-gray-100 rounded-md p-3 lg:p-5 ${
+              issue === selectedIssue ? "bg-blue-200" : ""
+            }`}
           >
-            {issue}
-          </button>
+            <input
+              type="radio"
+              onChange={() => handleIssueSelect(issue)}
+              checked={issue === selectedIssue}
+              className="custom-radio-btn mr-4"
+            />
+            <span className="font-bold">{issue}</span>
+          </label>
         ))}
       </div>
     </div>
