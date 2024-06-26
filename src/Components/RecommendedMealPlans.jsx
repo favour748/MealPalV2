@@ -53,6 +53,7 @@ function Searchbar({ setInputValue }) {
 function MealList(props) {
   const { el } = props;
   const { image, title, foodType, country } = el;
+  console.log(props.title);
   return (
     <div className="flex gap-2 my-6">
       <img
@@ -70,7 +71,7 @@ function MealList(props) {
           <span className="bg-[#F0F6FF] p-1 rounded-md"> {foodType}</span>
           <span className="bg-[#FFF0F0] p-1 rounded-md">{country}</span>
         </div>
-        <p className="text-[10px]  flex  items-center gap-1 w-24 bg-[#CDFFCB] font-semibold p-1 rounded-md">
+        <p className="text-[10px]  flex  items-center gap-1 max-w-24 bg-[#CDFFCB] font-semibold p-1 rounded-md">
           <span>
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +87,7 @@ function MealList(props) {
               />
             </svg>
           </span>
-          Recommended
+          {props.title === "recommended" ? "Recommended" : props.title}
         </p>
       </div>
     </div>
@@ -97,8 +98,7 @@ function RecommendedMealPlans() {
   const [myData, setMyData] = useState(data);
   const [inputValue, setInputValue] = useState("");
   const [loading, setLoading] = useState(false);
-
-  console.log(inputValue);
+  const [title, setTitle] = useState("Recommended");
 
   useEffect(() => {
     setLoading(true);
@@ -119,7 +119,18 @@ function RecommendedMealPlans() {
     };
   }, [inputValue]);
 
-  console.log(myData);
+  const handleFilter = (filterBy) => {
+    const title = filterBy.title.toLowerCase().trim();
+    const filter = filterBy.filter;
+    setMyData([]);
+    setTitle(title);
+    setLoading(true);
+    setTimeout(() => {
+      const filterItems = data.filter((obj) => obj[title] === filter);
+      setMyData(filterItems);
+      setLoading(false);
+    }, 1000);
+  };
 
   return (
     <>
@@ -132,15 +143,21 @@ function RecommendedMealPlans() {
           {filterKey.map((el, i) => (
             <li
               key={i}
-              className="py-2 px-4  cursor-pointer bg-[#F4F4F4] border bottom-2  hover:border-[#4268FB] text:[#777777] hover:text-[#4268FB] rounded-2xl"
+              onClick={() => handleFilter(el)}
+              className={`py-2 px-4  cursor-pointer bg-[#F4F4F4] border bottom-2  hover:border-[#4268FB] text:[#777777] hover:text-[#4268FB] rounded-2xl  ${
+                title.trim() === el.title.toLowerCase().trim() ||
+                title === el.title
+                  ? "border-[#4268FB] "
+                  : ""
+              }`}
             >
               {el.title}
             </li>
           ))}
         </ul>
       </div>
-      <h1 className="text-3xl text-black font-Manrope font-bold mt-4 mb-4">
-        Recommended Meal Plans
+      <h1 className="text-3xl capitalize text-black font-Manrope font-bold mt-4 mb-4">
+        {title} Meal Plans
       </h1>
       {/* recomended meal plan */}
       {loading && (
@@ -149,18 +166,23 @@ function RecommendedMealPlans() {
         </div>
       )}
       <div>
-        {!loading &&
-          myData.length(
-            <div>
-              {myData.map((el) => {
-                return (
-                  <div>
-                    <MealList key={el.id} el={el} />
-                  </div>
-                );
-              })}
-            </div>
-          )}
+        {!loading && myData.length > 0 && (
+          <div>
+            {myData.map((el) => {
+              return (
+                <div>
+                  <MealList key={el.id} el={el} title={title} />
+                </div>
+              );
+            })}
+          </div>
+        )}
+
+        {!loading && myData.length < 1 && (
+          <div className=" h-[50vh] flex justify-center items-center">
+            No meal found
+          </div>
+        )}
       </div>
     </>
   );
